@@ -39,6 +39,7 @@ export default function StyleText({align,children, color, fontSize, fontWeight, 
         color === "secundary" && styles.secundary,
         fontSize === "big" && styles.big,
         fontWeight === "bold" && styles.bold,
+        style,
 
     ]
 
