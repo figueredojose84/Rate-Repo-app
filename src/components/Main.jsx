@@ -1,15 +1,14 @@
 import react from 'react';
-import Constants from 'expo-constants';
 import {Text, View} from 'react-native';
 import RepoList from './RepoList';
-
-
+import Appbar from './Appbar';
 
 
 
 const Main = () => {
     return (
-        <View style={{marginTop: Constants.statusBarHeight, flexGrow:1}}>
+        <View style={{flexGrow:1}}> 
+            <Appbar/>      
             <RepoList />
         </View>
     )

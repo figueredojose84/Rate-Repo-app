@@ -1,9 +1,10 @@
 import React from "react";
 import Repositorios from "../data/Repositorios";
 import { FlatList } from "react-native";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import StyleText from "./StyleText";
 import theme from "../theme";
+
 
 const parset = value => {
     return value >= 1000 
@@ -31,6 +32,20 @@ const RepositoryStack = repo => {
       
     )
 }
+const RepoItemHeader = (props) => {
+    return (
+    <View style= {{flexDirection: 'row', paddingBottom:10}}>
+        <View style={{paddingRight:10}}>
+            <Image source={require('../../assets/reactnative-inner.svg')} style={styles.Image} />
+        </View>
+        <View style={{flex:1}}>
+            <StyleText fontWeight="bold" color="primary">{props.id}</StyleText>
+            <StyleText>{props.description}</StyleText>
+            <StyleText  style={styles.languaje}>{props.lenguaje}</StyleText>
+        </View>
+    </View>
+    )
+}
 
 const RepoList = () => {
     return (
@@ -39,10 +54,8 @@ const RepoList = () => {
         ItemSeparatorComponent = {() => <View style={{height: 1, backgroundColor: 'black'}} />}
         renderItem={({item: repo}) => (
         <View key={repo.id} style={styles.container}>
-            <StyleText fontWeight="bold" color="primary">{repo.id}</StyleText>
-             <StyleText>{repo.description}</StyleText>
-             <StyleText style={styles.languaje}>{repo.lenguaje}</StyleText>
-             <RepositoryStack {...repo}/>
+            <RepoItemHeader {...repo}/>
+            <RepositoryStack {...repo}/>
         </View>
         )}
        />
@@ -60,8 +73,14 @@ const styles = StyleSheet.create({
         color: theme.colors.white,
         backgroundColor: theme.colors.primary,
         alignSelf: 'flex-start',
+        borderRadius: 15,
+        overflow: 'hidden',
         
     },
+    Image: {
+        width: 48,
+        height: 48,
+    }
 }); 
 
 export default RepoList;
