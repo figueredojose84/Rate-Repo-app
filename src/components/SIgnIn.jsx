@@ -4,11 +4,6 @@ import { Formik, useField } from "formik";
 import StyleTextInput from "./StyleTextInput";
 import StyleText from "./StyleText";
 
-
-
-//https://github.com/midudev/rate-repository-app/blob/second-class/src/pages/LogIn.jsx
-
-
 const FormikInputValue = ({name, ...props}) => {
  const [field, meta, helpers] = useField(name)
     return(
@@ -57,7 +52,7 @@ const Styles = StyleSheet.create({
 });
 
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
     return (
       <Formik validate={validate} initialValues={initialValues} onSubmit={values=> console.log(values)}>
             {({handleChange, handleSubmit, values}) => {
@@ -74,9 +69,11 @@ const SignIn = () => {
                         <FormikInputValue 
                             placeholder="Contraseña"
                             name="password"
-                            secureTextEntryD
+                            secureTextEntry
                         />
-                        <Button   title="Iniciar Sesion" />
+                        <Button
+                         onPress={() => navigation.navigate('Main')}  
+                         title="Iniciar Sesion" />
                     </View>
                 )
             }}
