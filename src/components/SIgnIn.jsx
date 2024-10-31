@@ -72,7 +72,7 @@ const SignIn = ({navigation}) => {
                             secureTextEntry
                         />
                         <Button
-                         onPress={() => navigation.navigate('Main')}  
+                         onPress={() => navigation.navigate('PefilesUsuarios')}  
                          title="Iniciar Sesion" />
                     </View>
                 )
